@@ -25,13 +25,20 @@ pub async fn get_name() -> Result<String, reqwest::Error> {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Score {
-    assists: i16,
+    pub assists: i16,
     #[serde(rename = "creepScore")]
-    creep_score: i16,
-    deaths: i16,
-    kills: i16,
+    pub creep_score: i16,
+    pub deaths: i16,
+    pub kills: i16,
     #[serde(rename = "wardScore")]
-    ward_score: f32,
+    pub ward_score: f32,
+}
+
+pub enum Changed {
+    False,
+    Assist,
+    Kills,
+    Deaths,
 }
 
 pub async fn get_score(name: &str) -> Result<Score, reqwest::Error> {
@@ -48,4 +55,33 @@ pub async fn get_score(name: &str) -> Result<Score, reqwest::Error> {
 
     // Returns the score converted to Score struct
     Ok(score)
+}
+
+impl Score {
+    pub fn blank_score() -> Score{
+        Score{
+            assists: 0,
+            creep_score: 0,
+            deaths: 0,
+            kills: 0,
+            ward_score: 0.0,
+        }
+    }
+
+    pub fn compare(&self, other: &Score) -> Vec<Changed> {
+        let mut vec: Vec<Changed> = Vec::new();
+        if self.kills != other.kills {
+            vec.push(Changed::Kills);
+        }
+        if self.assists != other.assists {
+            vec.push(Changed::Assist);
+        }
+        if self.deaths != other.deaths {
+            vec.push(Changed::Deaths);
+        }
+        if vec.is_empty(){
+            vec.push(Changed::False);
+        }
+        vec
+    }
 }
