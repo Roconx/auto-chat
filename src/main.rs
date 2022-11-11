@@ -1,4 +1,5 @@
 mod client;
+mod parser;
 use std::{thread, time};
 use crate::client::{Score, Changed};
 
@@ -6,6 +7,7 @@ use crate::client::{Score, Changed};
 async fn main() {
     // Gets the name of the player
     let name = get_name().await;
+    println!("Client detected!");
 
     let mut current_score = Score::blank_score();
     // Gets the player's score
@@ -16,10 +18,8 @@ async fn main() {
                 let changes = score.compare(&current_score);
                 for change in changes {
                     match change {
-                        Changed::False => (),
-                        Changed::Kills => (),
-                        Changed::Deaths => (),
-                        Changed::Assist => (),
+                        Changed::Kills => {println!("A kill was made")},
+                        Changed::Deaths => {println!("You died")},
                     }
                 }
                 // Replaces current score with the new score

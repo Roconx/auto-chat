@@ -35,8 +35,6 @@ pub struct Score {
 }
 
 pub enum Changed {
-    False,
-    Assist,
     Kills,
     Deaths,
 }
@@ -73,14 +71,8 @@ impl Score {
         if self.kills != other.kills {
             vec.push(Changed::Kills);
         }
-        if self.assists != other.assists {
-            vec.push(Changed::Assist);
-        }
         if self.deaths != other.deaths {
             vec.push(Changed::Deaths);
-        }
-        if vec.is_empty(){
-            vec.push(Changed::False);
         }
         vec
     }
