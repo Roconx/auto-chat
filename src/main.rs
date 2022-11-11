@@ -13,4 +13,17 @@ async fn main() {
         let five_seconds = time::Duration::from_secs(5);
         thread::sleep(five_seconds);
     };
+
+    // Gets the player's score
+    loop {
+        match client::get_score(name.as_str()).await {
+            Ok(score) => {
+                println!("Score: {:#?}", score);
+            },
+            Err(e) => println!("Error checking score: {}", e),
+        }
+
+        let five_seconds = time::Duration::from_secs(5);
+        thread::sleep(five_seconds);
+    }
 }

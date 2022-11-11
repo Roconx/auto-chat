@@ -22,3 +22,30 @@ pub async fn get_name() -> Result<String, reqwest::Error> {
     // Returns the player's name
     Ok(player_name)
 }
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Score {
+    assists: i16,
+    #[serde(rename = "creepScore")]
+    creep_score: i16,
+    deaths: i16,
+    kills: i16,
+    #[serde(rename = "wardScore")]
+    ward_score: f32,
+}
+
+pub async fn get_score(name: &str) -> Result<Score, reqwest::Error> {
+    // Requests the league api for the player's score, ignores certificate error
+    let score: Score = reqwest::Client::builder()
+            .danger_accept_invalid_certs(true)
+            .build()
+            .unwrap()
+            .get(PLAYER_STATS_ADRESS.to_string() + name)
+            .send()
+            .await?
+            .json()
+            .await?;
+
+    // Returns the score converted to Score struct
+    Ok(score)
+}
