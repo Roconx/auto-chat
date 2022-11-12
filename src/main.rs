@@ -38,7 +38,7 @@ async fn main() {
             Err(e) => {
                 println!("Error checking score: {}", e);
                 name = get_name().await;
-            },
+            }
         }
 
         // Waits one second and tries again
