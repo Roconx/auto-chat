@@ -39,6 +39,7 @@ async fn main() {
             Err(e) => println!("Error checking score: {}", e),
         }
 
+        // Waits one second and tries again
         let one_second = time::Duration::from_secs(1);
         thread::sleep(one_second);
     }
