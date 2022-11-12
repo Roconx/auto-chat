@@ -57,6 +57,7 @@ pub async fn get_score(name: &str) -> Result<Score, reqwest::Error> {
 
 impl Score {
     pub fn blank_score() -> Score{
+        // Creates a new score, all values to 0
         Score{
             assists: 0,
             creep_score: 0,
@@ -67,6 +68,8 @@ impl Score {
     }
 
     pub fn compare(&self, other: &Score) -> Vec<Changed> {
+        // Compares if the values have changed and returns a vector with all the changes
+        // More than one change may have occurred
         let mut vec: Vec<Changed> = Vec::new();
         if self.kills != other.kills {
             vec.push(Changed::Kills);
