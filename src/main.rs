@@ -15,7 +15,7 @@ async fn main() {
     let kill = Action::Mastery;
 
     // Gets the name of the player
-    let name = get_name().await;
+    let mut name = get_name().await;
     println!("Client detected!");
 
     let mut current_score = Score::blank_score();
@@ -35,7 +35,10 @@ async fn main() {
                 // Replaces current score with the new score
                 current_score = score;
             }
-            Err(e) => println!("Error checking score: {}", e),
+            Err(e) => {
+                println!("Error checking score: {}", e);
+                name = get_name().await;
+            },
         }
 
         // Waits one second and tries again
