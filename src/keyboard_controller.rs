@@ -24,7 +24,7 @@ pub fn perform_action(action: &Action) {
             let message = parser::get_random(&file);
             send_message(&message);
         }
-        Action::Mastery => send_message("/masterybadge"),
-        Action::Surrender => send_message("/surrender"),
+        Action::Mastery => send_message("."),
+        Action::Surrender => send_message("/ff"),
     };
 }
