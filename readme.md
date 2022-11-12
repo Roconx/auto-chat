@@ -16,5 +16,5 @@ You can edit the "you_killed.txt" and "you_died.txt" with phrases to your liking
 
 ## Note
 
-This is pretty much a port of (Auto-chat)[https://github.com/Gabattal/Scripts-LeagueOfLegends/tree/main/Auto-Chat] to rust with a few added funcions such as mastery and surrender.
+This is pretty much a port of [Auto-chat](https://github.com/Gabattal/Scripts-LeagueOfLegends/tree/main/Auto-Chat) to rust with a few added funcions such as mastery and surrender.
 All feedback is apreciated!
