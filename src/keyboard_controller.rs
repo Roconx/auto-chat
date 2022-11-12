@@ -1,5 +1,5 @@
-use enigo::{Enigo, Key, KeyboardControllable};
 use crate::parser;
+use enigo::{Enigo, Key, KeyboardControllable};
 
 pub enum Action<'a> {
     Message(&'a Vec<String>),
@@ -23,7 +23,7 @@ pub fn perform_action(action: &Action) {
         Action::Message(file) => {
             let message = parser::get_random(&file);
             send_message(&message);
-        },
+        }
         Action::Mastery => send_message("/masterybadge"),
         Action::Surrender => send_message("/surrender"),
     };

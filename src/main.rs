@@ -1,10 +1,9 @@
 mod client;
-mod parser;
 mod keyboard_controller;
-use std::{thread, time};
-use crate::client::{Score, Changed};
+mod parser;
+use crate::client::{Changed, Score};
 use crate::keyboard_controller::Action;
-
+use std::{thread, time};
 
 #[tokio::main]
 async fn main() {
@@ -24,7 +23,7 @@ async fn main() {
     loop {
         match client::get_score(name.as_str()).await {
             Ok(score) => {
-                // Gets changes 
+                // Gets changes
                 let changes = score.compare(&current_score);
                 // Iterates and handles all changes
                 for change in changes {
@@ -35,7 +34,7 @@ async fn main() {
                 }
                 // Replaces current score with the new score
                 current_score = score;
-            },
+            }
             Err(e) => println!("Error checking score: {}", e),
         }
 

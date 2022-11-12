@@ -1,11 +1,10 @@
-use std::fs;
 use rand::seq::SliceRandom;
+use std::fs;
 
 const FILES: [&str; 2] = ["you_died.txt", "you_killed.txt"];
 
 fn read_file(file: &str) -> Vec<String> {
-    let contents = fs::read_to_string(file)
-        .expect("Couldn't read file");
+    let contents = fs::read_to_string(file).expect("Couldn't read file");
 
     // Adds /all to the start of all phrases
     contents.lines().map(|s| format!("/all {}", s)).collect()
@@ -13,7 +12,7 @@ fn read_file(file: &str) -> Vec<String> {
 
 pub fn read_files() -> Vec<Vec<String>> {
     // Reads all files in FILES array
-    let mut files: Vec<Vec<String>> = Vec::new(); 
+    let mut files: Vec<Vec<String>> = Vec::new();
     for i in 0..FILES.len() {
         let file = FILES[i];
         files.push(read_file(file))
