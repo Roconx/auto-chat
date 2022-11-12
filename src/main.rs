@@ -10,7 +10,8 @@ async fn main() {
     // Loads files
     let files = parser::read_files();
 
-    let death = Action::Message(&files[0]);
+    // let death = Action::Message(&files[0]);
+    let death = Action::Surrender;
 
     let kill = Action::Mastery;
 
@@ -31,6 +32,8 @@ async fn main() {
                         Changed::Deaths => keyboard_controller::perform_action(&death),
                         Changed::Kills => keyboard_controller::perform_action(&kill),
                     };
+                    let one_second = time::Duration::from_secs(1);
+                    thread::sleep(one_second);
                 }
                 // Replaces current score with the new score
                 current_score = score;
