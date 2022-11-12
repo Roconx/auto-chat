@@ -52,7 +52,7 @@ async fn get_name() -> String {
             Ok(name) => break name,
             Err(e) => println!("Client not found: {}", e),
         }
-        // Sleeps 5 seconds
+        // Waits 5 seconds and tries again
         let five_seconds = time::Duration::from_secs(5);
         thread::sleep(five_seconds);
     }
