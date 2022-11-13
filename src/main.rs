@@ -11,7 +11,7 @@ async fn main() {
     let files = parser::read_files();
 
     // let death = Action::Message(&files[0]);
-    let death = Action::Mastery;
+    let death = Action::Surrender;
 
     let kill = Action::Mastery;
 
@@ -41,7 +41,7 @@ async fn main() {
             Err(e) => {
                 println!("Error checking score: {}", e);
                 name = get_name().await;
-            }
+            },
         }
 
         // Waits one second and tries again
