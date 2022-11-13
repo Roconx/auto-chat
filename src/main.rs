@@ -10,7 +10,8 @@ async fn main() {
     // Loads files
     let files = parser::read_files();
 
-    let death = Action::Message(&files[0]);
+    // let death = Action::Message(&files[0]);
+    let death = Action::Mastery;
 
     let kill = Action::Mastery;
 

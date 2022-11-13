@@ -29,10 +29,10 @@ pub fn press_key(key: Key) {
 pub fn perform_action(action: &Action) {
     match action {
         Action::Message(file) => {
-            let message = parser::get_random(&file);
+            let message = parser::get_random(file);
             send_message(&message);
         }
         Action::Mastery => press_key(Key::Period),
-        Action::Surrender => send_message("/surrender"),
+        Action::Surrender => send_message("/ff"),
     };
 }
