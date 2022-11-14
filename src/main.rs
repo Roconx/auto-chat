@@ -18,9 +18,7 @@ async fn main() {
 
     // Gets the name of the player
     let mut name = get_name().await;
-    print!("\r                                        ");
-    print!("\rClient detected!");
-    stdout().flush().unwrap();
+    print("Client detected!");
 
     let mut current_score = Score::blank_score();
     // Gets the player's score
@@ -42,8 +40,7 @@ async fn main() {
                 current_score = score;
             }
             Err(_) => {
-                print!("\rError checking score, waiting for score..");
-                stdout().flush().unwrap();
+                print("Error checking score, waiting for score..");
                 name = get_name().await;
             }
         }
@@ -60,12 +57,18 @@ async fn get_name() -> String {
         match client::get_name().await {
             Ok(name) => break name,
             Err(_) => {
-                print!("\rClient not found, waiting for client..");
-                stdout().flush().unwrap();
+                print("Client not found, waiting for client..");
             }
         }
         // Waits 5 seconds and tries again
         let five_seconds = time::Duration::from_secs(5);
         thread::sleep(five_seconds);
     }
+}
+
+fn print(message: &str) {
+    // Clears the line and prints new message
+    print!("\r                                        ");
+    print!("\r{}", message);
+    stdout().flush().unwrap();
 }
