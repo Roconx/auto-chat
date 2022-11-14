@@ -1,7 +1,7 @@
 use crate::parser;
 use enigo::{Enigo, KeyboardControllable};
-use tfc::{traits::*, Context, Key};
 use std::{thread, time};
+use tfc::{traits::*, Context, Key};
 
 pub enum Action<'a> {
     Message(&'a Vec<String>),
@@ -24,21 +24,12 @@ pub fn send_message(message: &str) {
     enigo.key_click(enigo::Key::Return);
 }
 
-pub fn press_key(key: Key) {
-    // Presses the key
-    let mut ctx = Context::new().unwrap();
-
-    ctx.key_click(Key::Period).unwrap();
-
-    println!("Death detected");
-}
-
 pub fn perform_action(action: &Action) {
     match action {
         Action::Message(file) => {
             let message = parser::get_random(file);
             send_message(&message);
-        },
+        }
         Action::Mastery => send_message("/masterybadge"),
         Action::Surrender => send_message("/ff"),
     };

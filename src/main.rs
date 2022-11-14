@@ -3,6 +3,7 @@ mod keyboard_controller;
 mod parser;
 use crate::client::{Changed, Score};
 use crate::keyboard_controller::Action;
+use std::io::{stdout, Write};
 use std::{thread, time};
 
 #[tokio::main]
@@ -11,13 +12,15 @@ async fn main() {
     let files = parser::read_files();
 
     // let death = Action::Message(&files[0]);
-    let death = Action::Mastery;
+    let death = Action::Surrender;
 
     let kill = Action::Mastery;
 
     // Gets the name of the player
     let mut name = get_name().await;
-    println!("Client detected!");
+    print!("\r                                        ");
+    print!("\rClient detected!");
+    stdout().flush().unwrap();
 
     let mut current_score = Score::blank_score();
     // Gets the player's score
@@ -38,8 +41,9 @@ async fn main() {
                 // Replaces current score with the new score
                 current_score = score;
             }
-            Err(e) => {
-                println!("Error checking score: {}", e);
+            Err(_) => {
+                print!("\rError checking score, waiting for score..");
+                stdout().flush().unwrap();
                 name = get_name().await;
             }
         }
@@ -55,7 +59,10 @@ async fn get_name() -> String {
     loop {
         match client::get_name().await {
             Ok(name) => break name,
-            Err(e) => println!("Client not found: {}", e),
+            Err(_) => {
+                print!("\rClient not found, waiting for client..");
+                stdout().flush().unwrap();
+            }
         }
         // Waits 5 seconds and tries again
         let five_seconds = time::Duration::from_secs(5);
