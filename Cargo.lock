@@ -6,7 +6,7 @@ version = 3
 name = "auto-chat"
 version = "0.1.0"
 dependencies = [
- "enigo",
+ "enigo 0.0.14 (registry+https://github.com/rust-lang/crates.io-index)",
  "rand",
  "reqwest",
  "serde",
@@ -139,6 +139,12 @@ name = "enigo"
 version = "0.0.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "95ce8d7672e87b3155fd5e8a9226276da5c833e15bc879c7b98a78f743b67814"
+replace = "enigo 0.0.14 (git+https://github.com/NaokiM03/enigo)"
+
+[[package]]
+name = "enigo"
+version = "0.0.14"
+source = "git+https://github.com/NaokiM03/enigo#3a6cef7690a9f783a90deab30137f64c992bcdaa"
 dependencies = [
  "core-graphics 0.18.0",
  "libc",

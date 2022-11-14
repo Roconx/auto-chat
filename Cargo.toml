@@ -10,5 +10,8 @@ enigo = "0.0.14"
 rand = "0.8.5"
 reqwest = {version = "0.11.12", features = ["json"]}
 serde = {version = "1.0.147", features = ["derive"]}
-tfc = "0.6.2"
 tokio = {version = "1.21.2", features = ["full"]}
+tfc = "0.6.2"
+
+[replace]
+"enigo:0.0.14" = { git = "https://github.com/NaokiM03/enigo" }
