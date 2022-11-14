@@ -1,7 +1,7 @@
 use crate::parser;
 use enigo::{Enigo, KeyboardControllable};
 use std::{thread, time};
-use tfc::{traits::*, Context, Key};
+use tfc::{traits::*, Context};
 
 pub enum Action<'a> {
     Message(&'a Vec<String>),

@@ -2,7 +2,6 @@ mod client;
 mod keyboard_controller;
 mod parser;
 use crate::client::{Changed, Score};
-use crate::keyboard_controller::Action;
 use std::io::{stdout, Write};
 use std::{thread, time};
 
@@ -11,10 +10,11 @@ async fn main() {
     // Loads files
     let files = parser::read_files();
 
-    // let death = Action::Message(&files[0]);
-    let death = Action::Surrender;
+    let config: parser::Config = parser::parse_config();
 
-    let kill = Action::Mastery;
+    let death = parser::str_to_action(config.death.as_str(), &files[0]);
+
+    let kill = parser::str_to_action(config.kill.as_str(), &files[1]);
 
     // Gets the name of the player
     let mut name = get_name().await;

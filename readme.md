@@ -12,7 +12,20 @@ The current actiions that can be performed are:
 ## Usage
 
 To use it, you only need to clone the repository and type 'cargo run' in the terminal, the program should detect the game as soon as loading screen ends.
-You can edit the "you_killed.txt" and "you_died.txt" with phrases to your liking.
+<br>You can edit the "you_killed.txt" and "you_died.txt" with phrases to your liking.
+<br>Config.json example:
+<br>
+```json
+{
+  "death": "surrender",
+  "kill": "mastery"
+}
+
+```
+<br>The avaliable options are:
+- message
+- mastery
+- surrender
 
 ## Note
 
