@@ -6,6 +6,7 @@ pub enum Action<'a> {
     Message(&'a Vec<String>),
     Mastery,
     Surrender,
+    None,
 }
 
 pub fn send_message(message: &str) {
@@ -28,5 +29,6 @@ pub fn perform_action(action: &Action) {
         }
         Action::Mastery => send_message("/masterybadge"),
         Action::Surrender => send_message("/ff"),
+        Action::None => (),
     };
 }

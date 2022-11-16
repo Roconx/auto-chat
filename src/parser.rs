@@ -49,6 +49,7 @@ pub fn str_to_action<'a>(str: &'a str, phrases: &'a Vec<String>) -> Action<'a> {
         "message" => Action::Message(phrases),
         "mastery" => Action::Mastery,
         "surrender" => Action::Surrender,
+        "none" => Action::None,
         &_ => {
             panic!("Incorrect option in config.json, the avaliable options are: 'message', 'mastery', 'surrender'");
         }

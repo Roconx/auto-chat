@@ -1,5 +1,5 @@
 {
   "death": "surrender",
   "kill": "mastery",
-  "assist": "mastery"
+  "assist": "none"
 }
