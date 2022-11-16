@@ -8,6 +8,7 @@ The current actiions that can be performed are:
 - Writing a message in /all chat
 - Showing mastery
 - Starting a surrender vote
+- Not doing anything
 
 ## Usage
 
@@ -18,7 +19,8 @@ To use it, you only need to clone the repository and type 'cargo run' in the ter
 ```json
 {
   "death": "surrender",
-  "kill": "mastery"
+  "kill": "mastery",
+  "assist": "none"
 }
 
 ```
@@ -26,6 +28,7 @@ To use it, you only need to clone the repository and type 'cargo run' in the ter
 - message
 - mastery
 - surrender
+- none
 
 ## Note
 
