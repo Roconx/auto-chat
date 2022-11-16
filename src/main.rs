@@ -16,6 +16,8 @@ async fn main() {
 
     let kill = parser::str_to_action(config.kill.as_str(), &files[1]);
 
+    let assist = parser::str_to_action(config.assist.as_str(), &files[2]);
+
     // Gets the name of the player
     let mut name = get_name().await;
     print("Client detected!");
@@ -32,6 +34,7 @@ async fn main() {
                     match change {
                         Changed::Deaths => keyboard_controller::perform_action(&death),
                         Changed::Kills => keyboard_controller::perform_action(&kill),
+                        Changed::Assists => keyboard_controller::perform_action(&assist),
                     };
                     let one_second = time::Duration::from_secs(1);
                     thread::sleep(one_second);

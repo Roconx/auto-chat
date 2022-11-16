@@ -3,13 +3,14 @@ use rand::seq::SliceRandom;
 use serde::{Deserialize, Serialize};
 use std::fs;
 
-const FILES: [&str; 2] = ["you_died.txt", "you_killed.txt"];
+const FILES: [&str; 3] = ["death.txt", "kill.txt", "assist.txt"];
 const CONFIG: &str = "config.json";
 
 #[derive(Serialize, Deserialize)]
 pub struct Config {
     pub death: String,
     pub kill: String,
+    pub assist: String,
 }
 
 fn read_file(file: &str) -> Vec<String> {

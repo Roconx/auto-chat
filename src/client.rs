@@ -38,6 +38,7 @@ pub struct Score {
 pub enum Changed {
     Kills,
     Deaths,
+    Assists,
 }
 
 pub async fn get_score(name: &str) -> Result<Score, reqwest::Error> {
@@ -77,6 +78,9 @@ impl Score {
         }
         if self.deaths != other.deaths {
             vec.push(Changed::Deaths);
+        }
+        if self.assists != other.assists {
+            vec.push(Changed::Assists);
         }
         vec
     }
